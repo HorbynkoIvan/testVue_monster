@@ -7,15 +7,19 @@
       v-bind:description="user.description"   v-bind:name="user.name"
       v-bind:key="users.name"
     />
+    <hr>
+    <loginForm/>
   </div>
 </template>
 
 <script>
   import user from './User';
+  import loginForm from './components/LoginForm';
 
   export default {
     components: {
-      myUser: user
+      myUser: user,
+      loginForm
     },
     data() {
       return {
