@@ -4,11 +4,12 @@
     <myUser
       v-for="user in users"
 
-      v-bind:description="user.description"   v-bind:name="user.name"
+      v-bind:description="user.description" v-bind:name="user.name"
       v-bind:key="users.name"
     />
     <hr>
-    <loginForm/>
+   <!-- 1 <loginForm @login="onLogin"/>-->
+    <loginForm v-bind:onLogin="onLogin"/>
   </div>
 </template>
 
@@ -28,6 +29,14 @@
           {name: "Fritz", description: "This is our manager"},
           {name: "John", description: "This is our client"}
         ]
+      }
+    },
+    methods: {
+    /* 1 onLogin(data) {
+        return console.log("child component return", data);
+      } */
+      onLogin(data) {
+        return console.log("child component return", data);
       }
     }
   }

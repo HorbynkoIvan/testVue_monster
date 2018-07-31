@@ -14,17 +14,28 @@
 </template>
 
 <script>
-export default {
-  data(){
-    return{
-      email: "",
-      password:""
-    }
-  },
-  methods:{
-    login(){
-      console.log(`email: ${this.email} && password: ${this.password}`)
+  export default {
+    props: ['onLogin'],
+    data() {
+      return {
+        email: "",
+        password: ""
+      }
+    },
+    methods: {
+      login() {
+        // console.log(`email: ${this.email} && password: ${this.password}`)
+        //There is 3 methods to pass data from child to parent component
+        //1) this.$emit. emit realized on publish/subscribe principe.
+        /*1  this.$emit('login', {
+            email: this.email,
+            password: this.password
+          })*/
+        this.onLogin({
+          email: this.email,
+          password: this.password
+        })
+      }
     }
   }
-}
 </script>
