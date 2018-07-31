@@ -10,17 +10,20 @@
     <hr>
    <!-- 1 <loginForm @login="onLogin"/>-->
     <loginForm v-bind:onLogin="onLogin"/>
+    <successMessage :email="email"/>
   </div>
 </template>
 
 <script>
   import user from './User';
   import loginForm from './components/LoginForm';
+  import successMessage from './components/SuccessMessage';
 
   export default {
     components: {
       myUser: user,
-      loginForm
+      loginForm,
+      successMessage
     },
     data() {
       return {
@@ -28,7 +31,8 @@
           {name: "Alex", description: "This is our admin"},
           {name: "Fritz", description: "This is our manager"},
           {name: "John", description: "This is our client"}
-        ]
+        ],
+        email: ""
       }
     },
     methods: {
@@ -36,6 +40,7 @@
         return console.log("child component return", data);
       } */
       onLogin(data) {
+        this.email = data.email;
         return console.log("child component return", data);
       }
     }
